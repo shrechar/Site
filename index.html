@@ -1,0 +1,838 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shreshta.pt — Fertitruther</title>
+
+<style>
+:root {
+  --sea: #18bc9c;
+  --navy: #2c3e50;
+  --ink: #212529;
+  --pale: #e8f8f4;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+.container {
+  width: min(1100px, calc(100% - 42px));
+  margin: auto;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--navy);
+  color: white;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px #0001;
+}
+
+.navinner {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  font-size: 1.55rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: white;
+}
+
+.navlinks {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.navlinks a {
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: .88rem;
+  padding: 13px 12px;
+  border-radius: 5px;
+}
+
+.navlinks a:hover,
+.navlinks a:focus {
+  background: var(--sea);
+}
+
+.menu {
+  display: none;
+  border: 0;
+  background: var(--sea);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 5px;
+  font-weight: 700;
+}
+
+.hero {
+  background: var(--sea);
+  color: white;
+  text-align: center;
+  padding: 78px 20px 75px;
+}
+
+.plant {
+  width: 126px;
+  height: 126px;
+  margin: 0 auto 26px;
+  display: block;
+}
+
+.hero h1 {
+  font-size: 3.4rem;
+  line-height: 1.1;
+  margin: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 24px auto 22px;
+}
+
+.divider span {
+  height: 4px;
+  width: 92px;
+  border-radius: 4px;
+  background: currentColor;
+}
+
+.divider svg {
+  width: 30px;
+  height: 30px;
+}
+
+.subtitle {
+  font-size: 1.45rem;
+  margin: 0;
+}
+
+.section {
+  padding: 78px 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.15;
+  margin: 0;
+  color: var(--navy);
+}
+
+.section .divider { color: var(--navy); }
+
+.problem {
+  background: var(--sea);
+  color: white;
+}
+
+.problem .section-title { color: var(--navy); }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 46px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.lead {
+  font-size: 1.22rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.stats {
+  background: var(--navy);
+  color: white;
+}
+
+.stats .section-title,
+.stats .divider {
+  color: white;
+}
+
+.statgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 12px;
+}
+
+.statcard {
+  padding: 8px;
+  cursor: pointer;
+  transition: transform .2s;
+}
+
+.statcard:hover { transform: translateY(-4px); }
+
+.chart {
+  background: #f7faf9;
+  border-radius: 3px;
+  min-height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.chart svg {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+}
+
+.chartlabel {
+  text-align: center;
+  font-size: .9rem;
+  margin-top: 12px;
+  color: white;
+}
+
+.solution-content {
+  max-width: 960px;
+  margin: auto;
+}
+
+.solution-content h3 {
+  font-size: 1.65rem;
+  color: var(--navy);
+  margin: 0 0 18px;
+}
+
+.solution-list { padding-left: 24px; }
+
+.solution-list li {
+  font-size: 1.08rem;
+  margin-bottom: 22px;
+  padding-left: 5px;
+}
+
+.solution-list a {
+  color: #087f72;
+  text-decoration: underline;
+}
+
+.avoid { margin-top: 42px; }
+
+.avoid h3 {
+  font-size: 1.6rem;
+  color: var(--navy);
+}
+
+.action { background: #eaf8f5; }
+
+.actionbox {
+  max-width: 850px;
+  margin: auto;
+}
+
+.actionbox h3 {
+  font-size: 1.6rem;
+  color: var(--navy);
+  margin: 0 0 14px;
+}
+
+.actionbox p { font-size: 1.15rem; }
+
+.actionlinks {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 22px 0 50px;
+}
+
+.button {
+  display: inline-block;
+  background: var(--sea);
+  color: white;
+  padding: 13px 18px;
+  border: 0;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.button:hover { background: #139a80; }
+
+.email-template {
+  border: 1px solid #b7dcd4;
+  background: white;
+  border-radius: 6px;
+  padding: 20px;
+  margin-top: 18px;
+}
+
+.email-template[hidden] { display: none; }
+
+.footer {
+  background: var(--navy);
+  color: white;
+  text-align: center;
+  padding: 28px 15px;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: #10201ee8;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+}
+
+.modal.open { display: flex; }
+
+.modalpanel {
+  background: white;
+  color: #24302f;
+  width: min(850px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  border-radius: 7px;
+  padding: 26px;
+  position: relative;
+}
+
+.modalpanel h3 {
+  margin-top: 0;
+  color: var(--navy);
+  font-size: 1.6rem;
+}
+
+.close {
+  position: absolute;
+  right: 16px;
+  top: 10px;
+  border: 0;
+  background: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--navy);
+}
+
+.modalchart {
+  height: 280px;
+  background: #f6faf9;
+  display: grid;
+  place-items: center;
+}
+
+.modalchart svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 760px) {
+  .navinner {
+    min-height: 70px;
+    flex-wrap: wrap;
+    padding: 12px 0;
+  }
+
+  .brand { font-size: 1.35rem; }
+  .menu { display: block; }
+
+  .navlinks {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 5px 0 12px;
+  }
+
+  .navlinks.open { display: flex; }
+  .navlinks a { padding: 12px; }
+  .hero { padding: 60px 15px; }
+  .hero h1 { font-size: 2.5rem; }
+  .section { padding: 58px 0; }
+  .section-title { font-size: 2rem; }
+
+  .two-col,
+  .statgrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .chart { min-height: 210px; }
+  .lead { font-size: 1.1rem; }
+  .divider span { width: 65px; }
+}
+</style>
+</head>
+
+<body>
+<div id="app">
+
+<nav class="navbar">
+  <div class="container navinner">
+    <a class="brand" href="#page-top">Fertitruther</a>
+    <button class="menu" id="menuBtn" aria-expanded="false">Menu ☰</button>
+
+    <div class="navlinks" id="navlinks">
+      <a href="#about">The problem</a>
+      <a href="#portfolio">Statistics</a>
+      <a href="#contact">Clean solutions</a>
+      <a href="#action">Take Action</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="page-top">
+  <div class="container">
+    <svg class="plant" viewBox="0 0 140 140" aria-label="Plant illustration" role="img">
+      <circle cx="70" cy="70" r="67" fill="#fff" opacity=".15"/>
+      <path d="M70 112V53" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+      <path d="M69 78C39 77 25 58 29 38c27 0 43 14 40 40Z" fill="#fff"/>
+      <path d="M72 62C72 34 89 19 112 22c0 26-14 42-40 40Z" fill="#dff9f1"/>
+      <path d="M70 95C48 93 40 79 42 65c20 1 30 13 28 30Z" fill="#fff"/>
+      <path d="M46 117h48l-6 12H52Z" fill="#fff"/>
+      <path d="M42 112h56l-5 8H47Z" fill="#dff9f1"/>
+    </svg>
+
+    <h1>Fertitruther</h1>
+    <div class="divider">
+      <span></span>
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M20 34C6 25 6 10 27 5c2 17-2 25-7 29Z" fill="#fff"/>
+        <path d="M8 33 28 10" stroke="#fff" stroke-width="2"/>
+      </svg>
+      <span></span>
+    </div>
+    <p class="subtitle">For The Truth</p>
+  </div>
+</header>
+
+<section class="section problem" id="about">
+  <div class="container">
+    <h2 class="section-title">The problem</h2>
+    <div class="divider">
+      <span></span>
+      <svg viewBox="0 0 40 40">
+        <path d="M20 34C6 25 6 10 27 5c2 17-2 25-7 29Z" fill="#2c3e50"/>
+        <path d="M8 33 28 10" stroke="#2c3e50" stroke-width="2"/>
+      </svg>
+      <span></span>
+    </div>
+
+    <div class="two-col">
+      <p class="lead">
+        Did you know that the agriculture industry (primarily from pesticides
+        and fertilizer) contributes to 10% of our global pollution? There is a
+        6,300 square mile dead zone in the Gulf of Mexico because fertilizer
+        runoff depletes the oxygen in water and makes it impossible for marine
+        life to survive. A dramatic increase in previously limited nutrients
+        causes massive algal blooms that kill fish, poisons humans when they
+        eat seafood, and the death of marine mammals and shore birds.
+      </p>
+
+      <p class="lead">
+        Manufacturing fertilizer leads to the release of harmful greenhouse
+        gasses into the atmosphere and using fertilizer leads to oxygen
+        depletion in our waterways. This eventually results in ocean
+        acidification, altering marine food chains and food supply to humans.
+        Acidification also decreases storm protection from reefs, tourism
+        opportunities, access to food, oxygen production, and other benefits
+        of the ocean that are invaluable.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section stats" id="portfolio">
+  <div class="container">
+    <h2 class="section-title">Statistics</h2>
+    <div class="divider">
+      <span></span>
+      <svg viewBox="0 0 40 40">
+        <path d="M20 34C6 25 6 10 27 5c2 17-2 25-7 29Z" fill="#fff"/>
+        <path d="M8 33 28 10" stroke="#fff" stroke-width="2"/>
+      </svg>
+      <span></span>
+    </div>
+
+    <div class="statgrid">
+
+      <div class="statcard" data-modal="0" tabindex="0" role="button">
+        <div class="chart">
+          <svg viewBox="0 0 320 230">
+            <rect width="320" height="230" fill="#f7faf9"/>
+            <text x="160" y="26" text-anchor="middle" font-size="12" fill="#344b4b">Hypoxic ecosystems across the U.S.</text>
+            <path d="M34 183H286M34 145H286M34 107H286M34 69H286" stroke="#d4e1de"/>
+            <g fill="#18bc9c">
+              <rect x="48" y="133" width="25" height="50"/>
+              <rect x="83" y="115" width="25" height="68"/>
+              <rect x="118" y="79" width="25" height="104"/>
+              <rect x="153" y="48" width="25" height="135"/>
+              <rect x="188" y="101" width="25" height="82"/>
+              <rect x="223" y="125" width="25" height="58"/>
+            </g>
+            <g fill="#425c5a" font-size="10" text-anchor="middle">
+              <text x="60" y="199">CA</text>
+              <text x="95" y="199">LA</text>
+              <text x="130" y="199">TX</text>
+              <text x="165" y="199">FL</text>
+              <text x="200" y="199">NC</text>
+              <text x="235" y="199">Other</text>
+            </g>
+            <text x="160" y="219" text-anchor="middle" font-size="10" fill="#425c5a">Illustrative chart</text>
+          </svg>
+        </div>
+        <p class="chartlabel">Number of Hypoxic Ecosystems Per U.S. State</p>
+      </div>
+
+      <div class="statcard" data-modal="1" tabindex="0" role="button">
+        <div class="chart">
+          <svg viewBox="0 0 320 230">
+            <rect width="320" height="230" fill="#f7faf9"/>
+            <text x="160" y="25" text-anchor="middle" font-size="12" fill="#344b4b">Fertilizer purchased by state</text>
+            <path d="M30 183H294M30 145H294M30 107H294M30 69H294" stroke="#d4e1de"/>
+            <g fill="#18bc9c">
+              <rect x="44" y="49" width="28" height="134"/>
+              <rect x="82" y="90" width="28" height="93"/>
+              <rect x="120" y="112" width="28" height="71"/>
+              <rect x="158" y="125" width="28" height="58"/>
+              <rect x="196" y="139" width="28" height="44"/>
+              <rect x="234" y="151" width="28" height="32"/>
+            </g>
+            <g fill="#425c5a" font-size="10" text-anchor="middle">
+              <text x="58" y="199">IA</text>
+              <text x="96" y="199">IL</text>
+              <text x="134" y="199">CA</text>
+              <text x="172" y="199">TX</text>
+              <text x="210" y="199">OH</text>
+              <text x="248" y="199">Other</text>
+            </g>
+            <text x="160" y="219" text-anchor="middle" font-size="10" fill="#425c5a">Nitrogen and phosphorus, 2011</text>
+          </svg>
+        </div>
+        <p class="chartlabel">Nitrogen and Phosphorus Pentoxide Fertilizer Purchased Per U.S. State (2011)</p>
+      </div>
+
+      <div class="statcard" data-modal="2" tabindex="0" role="button">
+        <div class="chart">
+          <svg viewBox="0 0 320 230">
+            <rect width="320" height="230" fill="#f7faf9"/>
+            <text x="160" y="25" text-anchor="middle" font-size="12" fill="#344b4b">Nitrogen fertilizer production</text>
+            <g stroke="#fff" stroke-width="2">
+              <rect x="34" y="48" width="120" height="64" fill="#18bc9c"/>
+              <rect x="156" y="48" width="68" height="64" fill="#5bd4b8"/>
+              <rect x="226" y="48" width="60" height="64" fill="#9ae7d5"/>
+              <rect x="34" y="114" width="83" height="50" fill="#4e9f91"/>
+              <rect x="119" y="114" width="80" height="50" fill="#78c8b6"/>
+              <rect x="201" y="114" width="85" height="50" fill="#b6eadf"/>
+              <rect x="34" y="166" width="252" height="23" fill="#d2f2e9"/>
+            </g>
+            <g fill="#244641" font-size="11" text-anchor="middle">
+              <text x="94" y="83">China</text>
+              <text x="190" y="83">India</text>
+              <text x="256" y="83">Other</text>
+              <text x="75" y="143">U.S.</text>
+              <text x="159" y="143">Russia</text>
+              <text x="243" y="143">Other</text>
+              <text x="160" y="182">Global production</text>
+            </g>
+            <text x="160" y="216" text-anchor="middle" font-size="10" fill="#425c5a">Metric tons by country, 2019</text>
+          </svg>
+        </div>
+        <p class="chartlabel">Metric Tons of Nitrogen Fertilizer Produced Per Country (2019)</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <h2 class="section-title">Clean solutions</h2>
+    <div class="divider">
+      <span></span>
+      <svg viewBox="0 0 40 40">
+        <path d="M20 34C6 25 6 10 27 5c2 17-2 25-7 29Z" fill="#2c3e50"/>
+        <path d="M8 33 28 10" stroke="#2c3e50" stroke-width="2"/>
+      </svg>
+      <span></span>
+    </div>
+
+    <div class="solution-content">
+      <h3>Alternatives to chemical fertilizer:</h3>
+
+      <ul class="solution-list">
+        <li>
+          Compost is nature’s way of using its own resources to feed the next
+          cycle of plant life. It is a zero-waste way of gardening and works
+          alongside nature.
+          <br>Where to buy:
+          <a href="https://www.homedepot.com/" target="_blank" rel="noreferrer">Home Depot</a>,
+          <a href="https://www.lowes.com/" target="_blank" rel="noreferrer">Lowe’s</a>
+        </li>
+
+        <li>
+          Lomi dirt is an all-natural alternative to fertilizer. It blends
+          with existing soil to boost its nutrient content organically.
+          <br>Where to buy:
+          <a href="https://pela.earth/products/lomi" target="_blank" rel="noreferrer">Pela</a>
+        </li>
+
+        <li>
+          Composted manure can increase carbon in soil while decreasing carbon
+          in the atmosphere. Use composted manure rather than fresh manure.
+          <br>Where to buy:
+          <a href="https://www.homedepot.com/" target="_blank" rel="noreferrer">Home Depot</a>,
+          <a href="https://www.lowes.com/" target="_blank" rel="noreferrer">Lowe’s</a>
+        </li>
+
+        <li>
+          Bat guano can be used as a plant fertilizer and may help control
+          some soil pests.
+          <br>Where to buy:
+          <a href="https://www.amazon.com/" target="_blank" rel="noreferrer">Amazon</a>
+        </li>
+
+        <li>
+          Worm castings help soil retain water, improve aeration, and support
+          beneficial soil microorganisms.
+          <br>Where to buy:
+          <a href="https://www.homedepot.com/" target="_blank" rel="noreferrer">Home Depot</a>,
+          <a href="https://www.lowes.com/" target="_blank" rel="noreferrer">Lowe’s</a>
+        </li>
+
+        <li>
+          Peat moss holds moisture and is used in many potting soils and
+          seed-starting mixes.
+          <br>Where to buy:
+          <a href="https://www.homedepot.com/" target="_blank" rel="noreferrer">Home Depot</a>,
+          <a href="https://www.acehardware.com/" target="_blank" rel="noreferrer">ACE Hardware</a>,
+          <a href="https://www.lowes.com/" target="_blank" rel="noreferrer">Lowe’s</a>
+        </li>
+      </ul>
+
+      <div class="avoid">
+        <h3>What to avoid:</h3>
+        <ul class="solution-list">
+          <li>
+            <strong>Milorganite 6-4-0 Fertilizer</strong><br>
+            The original project notes that PFOA and PFOS, two forms of PFAS,
+            were detected.
+          </li>
+          <li>
+            <strong>Fertilizers containing excess nitrates and phosphorus</strong><br>
+            Excess nutrients can enter groundwater and waterways, contribute
+            to algal blooms, and reduce dissolved oxygen through eutrophication.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section action" id="action">
+  <div class="container">
+    <h2 class="section-title">Take Action</h2>
+    <div class="divider">
+      <span></span>
+      <svg viewBox="0 0 40 40">
+        <path d="M20 34C6 25 6 10 27 5c2 17-2 25-7 29Z" fill="#2c3e50"/>
+        <path d="M8 33 28 10" stroke="#2c3e50" stroke-width="2"/>
+      </svg>
+      <span></span>
+    </div>
+
+    <div class="actionbox">
+      <h3>Contact your representative:</h3>
+      <p>
+        Fertilizer pollution is a growing environmental concern. Encourage
+        your representatives to support legislation that protects our planet
+        by limiting harmful fertilizer runoff and improving water quality.
+      </p>
+
+      <div class="actionlinks">
+        <a class="button"
+           href="https://www.house.gov/representatives/find-your-representative"
+           target="_blank" rel="noreferrer">
+          Find your representative ↗
+        </a>
+        <button class="button" id="emailToggle">Email Template</button>
+      </div>
+
+      <div class="email-template" id="emailTemplate" hidden>
+        <strong>Subject: Support legislation to reduce fertilizer pollution</strong>
+        <p>Dear Representative,</p>
+        <p>
+          I am writing to encourage you to support legislation that limits
+          harmful fertilizer pollution. Excess fertilizer runoff contributes
+          to algal blooms, oxygen-depleted dead zones, and damage to marine
+          ecosystems. Please support policies that reduce nutrient pollution
+          and protect our waterways and oceans.
+        </p>
+        <p>Thank you for your time and consideration.</p>
+        <button class="button" id="copyEmail">Copy template</button>
+        <span id="copyStatus" aria-live="polite"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  Copyright © Fertitruther 2022
+</footer>
+
+<div class="modal" id="statModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modalpanel">
+    <button class="close" id="closeModal" aria-label="Close">×</button>
+    <h3 id="modalTitle"></h3>
+    <div class="modalchart" id="modalChart"></div>
+    <p id="modalText"></p>
+    <p><em>Note: the chart artwork is illustrative and does not represent verified current data.</em></p>
+  </div>
+</div>
+
+</div>
+
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const navlinks = document.getElementById('navlinks');
+
+menuBtn.addEventListener('click', () => {
+  const open = navlinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', String(open));
+});
+
+navlinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navlinks.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  });
+});
+
+const details = [
+  {
+    title: 'Number of Hypoxic Ecosystems Per U.S. State',
+    text: 'Hypoxic ecosystems are dead zones where oxygen levels are too low for much marine life to survive. Fertilizer runoff can trigger algal blooms that consume oxygen as they decay.'
+  },
+  {
+    title: 'Nitrogen and Phosphorus Fertilizer Purchased Per U.S. State (2011)',
+    text: 'Nitrogen and phosphorus are common fertilizer nutrients. Excess runoff can harm waterways and contribute to algal blooms.'
+  },
+  {
+    title: 'Nitrogen Fertilizer Produced Per Country (2019)',
+    text: 'Nitrogen fertilizer production varies by country. The chart is an illustrative visualization rather than a verified current dataset.'
+  }
+];
+
+const modal = document.getElementById('statModal');
+
+function showModal(index) {
+  document.getElementById('modalTitle').textContent = details[index].title;
+  document.getElementById('modalText').textContent = details[index].text;
+  document.getElementById('modalChart').innerHTML =
+    document.querySelectorAll('.chart')[index].innerHTML;
+
+  modal.classList.add('open');
+  document.getElementById('closeModal').focus();
+}
+
+document.querySelectorAll('.statcard').forEach((card, index) => {
+  card.setAttribute('aria-label', 'Open ' + details[index].title);
+
+  card.addEventListener('click', () => showModal(index));
+
+  card.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      showModal(index);
+    }
+  });
+});
+
+document.getElementById('closeModal').addEventListener('click', () => {
+  modal.classList.remove('open');
+});
+
+modal.addEventListener('click', event => {
+  if (event.target === modal) {
+    modal.classList.remove('open');
+  }
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    modal.classList.remove('open');
+  }
+});
+
+document.getElementById('emailToggle').addEventListener('click', () => {
+  const template = document.getElementById('emailTemplate');
+  template.hidden = !template.hidden;
+});
+
+document.getElementById('copyEmail').addEventListener('click', () => {
+  const templateText =
+    'Subject: Support legislation to reduce fertilizer pollution\n\n' +
+    'Dear Representative,\n\n' +
+    'I am writing to encourage you to support legislation that limits ' +
+    'harmful fertilizer pollution. Excess fertilizer runoff contributes ' +
+    'to algal blooms, oxygen-depleted dead zones, and damage to marine ' +
+    'ecosystems. Please support policies that reduce nutrient pollution ' +
+    'and protect our waterways and oceans.\n\n' +
+    'Thank you for your time and consideration.';
+
+  const status = document.getElementById('copyStatus');
+
+  try {
+    const helper = document.createElement('textarea');
+    helper.value = templateText;
+    helper.setAttribute('readonly', '');
+    helper.style.position = 'fixed';
+    helper.style.opacity = '0';
+    document.body.appendChild(helper);
+    helper.select();
+
+    const copied = document.execCommand('copy');
+    helper.remove();
+
+    status.textContent = copied
+      ? ' Template copied.'
+      : ' Please select and copy the template text above.';
+  } catch (error) {
+    status.textContent = ' Please select and copy the template text above.';
+  }
+});
+</script>
+</body>
+</html>
